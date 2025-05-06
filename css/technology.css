@@ -1,0 +1,154 @@
+.technology__page {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto auto auto auto;
+	gap: 10px 0;
+	grid-template-areas:
+		"title"
+		"photo"
+		"nav"
+		"details";
+
+	.technology__title {
+		width: 100%;
+		margin: 20px 0;
+		text-align: center;
+		color: var(--text-color);
+		font-weight: 500;
+		grid-area: title;
+
+		& span {
+			font-weight: 900;
+			margin-right: 1em;
+			color: var(--text-color3);
+		}
+	}
+
+	.technology__photo {
+		width: 100%;
+		height: 100%;
+		grid-area: photo;
+		text-align: center;
+		align-content: center;
+
+		& img {
+			width: min(400px, 95vw);
+			height: min(400px, 100vw);
+		}
+	}
+
+	.technology__nav {
+		grid-area: nav;
+		text-align: center;
+		margin: 20px 0;
+
+		& button {
+			border: 1px solid white;
+			padding: 10px;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			font-size: 18px;
+			margin-right: min(5vw, 20px);
+			cursor: pointer;
+			background-color: transparent;
+			color: white;
+
+			&:last-child {
+				margin: 0;
+			}
+
+			&:hover {
+				background-color: white;
+				color: black;
+			}
+
+			&:focus {
+				outline: none;
+			}
+
+			&.active {
+				background-color: white;
+				color: black;
+			}
+		}
+	}
+
+	.technology__details {
+		grid-area: details;
+		text-align: center;
+		text-wrap: balance;
+
+		.terminology__txt {
+			font-size: 14px;
+			font-family: Bellefair, sans-serif;
+			color: var(--text-color2);
+			font-weight: 400;
+		}
+
+		.technology__name {
+			margin: 15px 0;
+			font-size: clamp(1.5em, 10vw, 3em);
+			font-weight: 500;
+			font-family: Bellefair, sans-serif;
+		}
+
+		.technology__description {
+			color: var(--text-color);
+			font-weight: 400;
+			font-size: 1.1em;
+			line-height: 1.5;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+	.technology__page {
+		height: calc(100vh - 145px);
+		margin-top: 40px;
+		grid-template-columns: auto 1fr 1fr;
+		grid-template-rows: 50px auto auto;
+		grid-template-areas:
+			"title title title"
+			"nav details photo"
+			". . .";
+
+		.technology__photo {
+			text-align: end;
+			& img {
+				width: 450px;
+				height: 450px;
+			}
+		}
+
+		.technology__title {
+			text-align: start;
+		}
+
+		.technology__nav {
+			margin: 0;
+			min-width: 150px;
+			display: flex;
+			flex-flow: column wrap;
+			align-content: center;
+			justify-content: space-evenly;
+
+			& button {
+				height: 75px;
+				width: 75px;
+				margin: 0;
+				font-size: 2em;
+			}
+		}
+
+		.technology__details {
+			align-content: center;
+			text-align: start;
+		}
+	}
+}

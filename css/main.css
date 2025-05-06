@@ -1,0 +1,325 @@
+@import "./main-page.css";
+@import "./destination.css";
+@import "./crew.css";
+@import "./technology.css";
+
+:root {
+	--text-color: #d0d6f9;
+	--text-color2: rgb(158, 158, 158);
+	--text-color3: #4c4d58;
+	--hover-color: rgb(192, 192, 192);
+	--shadow-focus: #212529d7;
+	--white: white;
+	--black: #131522;
+	--animation-duration: 1s;
+	--transition-duration: 600ms;
+	--animation-timing: ease;
+}
+
+@font-face {
+	font-family: DMSans;
+	src: url("../assets/fonts/DMSans-VariableFont_opsz\,wght.ttf");
+}
+
+@font-face {
+	font-family: Bellefair;
+	src: url("../assets/fonts/Bellefair-Regular.ttf");
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+::selection {
+	background-color: #673ab7;
+}
+
+body {
+	background-color: var(--black);
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	font-family: DMSans, sans-serif;
+	color: var(--white);
+	transition: background var(--transition-duration) ease;
+
+	&:has(.main__page.show) {
+		background-image: url("../assets/home/background-home-mobile.jpg");
+	}
+	&:has(.destination__page.show) {
+		background-image: url("../assets/destination/background-destination-mobile.jpg");
+	}
+	&:has(.crew__page.show) {
+		background-image: url("../assets/crew/background-crew-mobile.jpg");
+	}
+	&:has(.technology__page.show) {
+		background-image: url("../assets/technology/background-technology-mobile.jpg");
+	}
+}
+
+header {
+	width: 100%;
+	padding: 15px;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+
+	.header__logo {
+		cursor: pointer;
+		max-height: 50px;
+
+		& img {
+			width: 50px;
+			height: 50px;
+			object-fit: cover;
+		}
+	}
+	.header__line__separator {
+		display: none;
+	}
+	& nav {
+		height: 237px;
+		display: block;
+		position: absolute;
+		padding: 10px;
+		z-index: 1;
+		width: 100%;
+		left: 0;
+		bottom: -237px;
+		transition: bottom 500ms ease;
+		background-color: transparent;
+		backdrop-filter: blur(10px);
+
+		& ul {
+			padding: 10px;
+			list-style: none;
+			font-size: 20px;
+			font-weight: 600;
+			& li {
+				margin-bottom: 15px;
+				cursor: pointer;
+				border-bottom: 2px solid transparent;
+				padding: 5px;
+
+				.header__page__number {
+					display: none;
+					font-weight: 900;
+				}
+
+				&.active {
+					border-bottom-color: var(--white);
+				}
+
+				&:hover {
+					border-bottom-color: var(--hover-color);
+				}
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	:not(.navbar-toggler[data-toggle="extend"]) + span + nav {
+		bottom: 101%;
+	}
+
+	.navbar-toggler {
+		background-color: transparent;
+		border: none;
+		width: 35px;
+		height: 50px;
+		display: flex;
+		flex-flow: column wrap;
+		justify-content: space-evenly;
+		cursor: pointer;
+
+		&:focus {
+			outline: none;
+		}
+
+		.navbar-toggler-line {
+			border-bottom: 4px solid var(--text-color);
+			width: 100%;
+		}
+	}
+}
+
+main {
+	display: flex;
+	flex-flow: row wrap;
+	height: calc(100vh - 80px);
+	width: 100%;
+	position: relative;
+}
+
+.main__page,
+.destination__page,
+.crew__page,
+.technology__page {
+	position: absolute;
+	animation-duration: var(--animation-duration);
+	animation-timing-function: var(--animation-timing);
+	animation-iteration-count: 1;
+	animation-fill-mode: both;
+	animation-direction: alternate;
+
+	&.show {
+		animation-name: show;
+	}
+
+	&.hide {
+		animation-name: hide;
+	}
+}
+
+@keyframes show {
+	from {
+		transform: scale(0);
+		opacity: 0;
+	}
+
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes hide {
+	from {
+		transform: translate(0);
+		opacity: 1;
+	}
+
+	to {
+		transform: translate(-101vw);
+		opacity: 0;
+	}
+}
+
+@media (min-width: 768px) {
+	body {
+		&:has(.main__page.show) {
+			background-image: url("../assets/home/background-home-tablet.jpg");
+		}
+		&:has(.destination__page.show) {
+			background-image: url("../assets/destination/background-destination-tablet.jpg");
+		}
+		&:has(.crew__page.show) {
+			background-image: url("../assets/crew/background-crew-tablet.jpg");
+		}
+		&:has(.technology__page.show) {
+			background-image: url("../assets/technology/background-technology-tablet.jpg");
+		}
+		display: flex;
+		flex-flow: column wrap;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+	}
+	main {
+		height: calc(100vh - 100px);
+		width: 75%;
+	}
+
+	header {
+		padding: 0;
+		.header__logo {
+			margin: 20px 0 0 30px;
+		}
+
+		& nav {
+			all: unset;
+			background-color: #131522;
+			flex-basis: 65%;
+			align-content: center;
+			height: 100px;
+
+			& ul {
+				font-size: 15px;
+				padding: 0 15px;
+				display: flex;
+				justify-content: space-between;
+
+				& li {
+					margin-bottom: 0;
+					height: 100px;
+					align-content: center;
+				}
+			}
+		}
+
+		.navbar-toggler {
+			display: none;
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	body {
+		&:has(.main__page.show) {
+			background-image: url("../assets/home/background-home-desktop.jpg");
+		}
+		&:has(.destination__page.show) {
+			background-image: url("../assets/destination/background-destination-desktop.jpg");
+		}
+		&:has(.crew__page.show) {
+			background-image: url("../assets/crew/background-crew-desktop.jpg");
+		}
+		&:has(.technology__page.show) {
+			background-image: url("../assets/technology/background-technology-desktop.jpg");
+		}
+		display: flex;
+		flex-flow: column wrap;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+	}
+
+	main {
+		height: calc(100vh - 100px);
+		width: 90%;
+	}
+
+	header {
+		top: 30px;
+		.header__logo {
+			margin: auto 0 auto 50px;
+		}
+
+		.header__line__separator {
+			margin-right: -80px;
+			z-index: 2;
+			align-self: center;
+			display: block;
+			width: calc(35% - 100px);
+			border-bottom: 1px solid var(--text-color);
+		}
+
+		& nav {
+			background-color: transparent;
+			backdrop-filter: blur(10px);
+			flex-basis: 65%;
+
+			& ul {
+				justify-content: space-evenly;
+
+				& li {
+					font-weight: 300;
+					.header__page__number {
+						display: inline;
+						margin-right: 8px;
+					}
+				}
+			}
+		}
+
+		.navbar-toggler {
+			display: none;
+		}
+	}
+}

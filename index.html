@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="A Frontend-Mentor challenge" />
+		<link
+			rel="shortcut icon"
+			href="assets/favicon-32x32.png"
+			type="image/x-icon"
+		/>
+		<link rel="stylesheet" href="css/main.css" />
+		<title>Space Tourism</title>
+	</head>
+	<body>
+		<header>
+			<section class="header__logo" onclick="changePage('/')">
+				<img src="assets/shared/logo.svg" alt="Logo" />
+			</section>
+			<button class="navbar-toggler" id="navbar-toggler" data-toggle="collapse">
+				<span class="navbar-toggler-line line-1"></span>
+				<span class="navbar-toggler-line line-2"></span>
+				<span class="navbar-toggler-line line-3"></span>
+			</button>
+			<span class="header__line__separator"></span>
+			<nav>
+				<ul>
+					<li id="main-link" class="active" onclick="changePage('/')">
+						<span class="header__page__number">00</span>
+						HOME
+					</li>
+					<li id="destination-link" onclick="changePage('destination')">
+						<span class="header__page__number">01</span>
+						DESTINATION
+					</li>
+					<li id="crew-link" onclick="changePage('crew')">
+						<span class="header__page__number">02</span>
+						CREW
+					</li>
+					<li id="technology-link" onclick="changePage('technology')">
+						<span class="header__page__number">03</span>
+						TECHNOLOGY
+					</li>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<section class="main__page hide" id="main-page">
+				<article class="main__info">
+					<h1>SO, YOU WANT TO TRAVEL TO <span>SPACE</span></h1>
+					<p class="s-text">
+						Let’s face it; if you want to go to space, you might as well
+						genuinely go to outer space and not hover kind of on the edge of it.
+						Well sit back, and relax because we’ll give you a truly out of this
+						world experience!
+					</p>
+				</article>
+				<article class="main__explore">
+					<button type="button" onclick="explore(event)">explore</button>
+				</article>
+			</section>
+
+			<section class="destination__page hide" id="destination-page">
+				<section class="destination__title">
+					<h2>
+						<span>01</span>
+						PICK YOUR DESTINATION
+					</h2>
+				</section>
+
+				<section class="destination__holder">
+					<img
+						id="planet-image"
+						src="assets/destination/image-moon.webp"
+						alt="planet image"
+					/>
+				</section>
+
+				<section class="destination__planet">
+					<section class="destination__planet__navbar">
+						<ul>
+							<li
+								id="moon-planet"
+								class="active"
+								onclick="changeDestination(event,'Moon')"
+							>
+								Moon
+							</li>
+							<li id="mars-planet" onclick="changeDestination(event,'Mars')">
+								Mars
+							</li>
+							<li
+								id="europa-planet"
+								onclick="changeDestination(event,'Europa')"
+							>
+								Europa
+							</li>
+							<li id="titan-planet" onclick="changeDestination(event,'Titan')">
+								Titan
+							</li>
+						</ul>
+					</section>
+					<section class="destination__planet__info">
+						<h3 id="planet-name">Moon</h3>
+
+						<p id="planet-description">
+							See our planet as you’ve never seen it before. A perfect relaxing
+							trip away to help regain perspective and come back refreshed.
+							While you’re there, take in some history by visiting the Luna 2
+							and Apollo 11 landing sites.
+						</p>
+					</section>
+					<hr />
+					<section class="destination__planet__footer">
+						<section class="destination__distance">
+							<p>AVG. DISTANCE</p>
+							<h4 id="destination-distance">384,400 km</h4>
+						</section>
+
+						<section class="destination__time">
+							<p>EST. TRAVEL TIME</p>
+							<h4 id="destination-time">3 days</h4>
+						</section>
+					</section>
+				</section>
+			</section>
+
+			<section class="crew__page hide" id="crew-page">
+				<h2 class="crew__title">
+					<span>02</span>
+					MEET YOUR CREW
+				</h2>
+
+				<section class="crew__photo">
+					<img
+						id="crew-photo"
+						src="assets/crew/image-douglas-hurley.webp"
+						alt="crew photo"
+					/>
+				</section>
+
+				<section class="crew__nav">
+					<button
+						type="button"
+						class="active"
+						id="nav-c1"
+						onclick="changeCrew(event, 'Douglas')"
+					></button>
+					<button
+						type="button"
+						id="nav-c2"
+						onclick="changeCrew(event, 'Mark')"
+					></button>
+					<button
+						type="button"
+						id="nav-c3"
+						onclick="changeCrew(event, 'Victor')"
+					></button>
+					<button
+						type="button"
+						id="nav-c4"
+						onclick="changeCrew(event, 'Anousheh')"
+					></button>
+				</section>
+
+				<section class="crew__details">
+					<h3 id="crew-position" class="crew__position">Commander</h3>
+					<h4 id="crew-name" class="crew__name">Douglas Hurley</h4>
+					<p id="crew-description" class="crew__description">
+						Douglas Gerald Hurley is an American engineer, former Marine Corps
+						pilot and former NASA astronaut. He launched into space for the
+						third time as commander of Crew Dragon Demo-2.
+					</p>
+				</section>
+			</section>
+
+			<section class="technology__page hide" id="technology-page">
+				<h2 class="technology__title">
+					<span>03</span>
+					SPACE LAUNCH 101
+				</h2>
+
+				<section class="technology__photo">
+					<img
+						id="technology-photo"
+						src="assets/technology/image-launch-vehicle-landscape.jpg"
+						alt="technology photo"
+					/>
+				</section>
+
+				<section class="technology__nav">
+					<button
+						onclick="changeTech(event, 'Launch vehicle')"
+						type="button"
+						class="active"
+						id="nav-t1"
+					>
+						1
+					</button>
+					<button
+						onclick="changeTech(event, 'Spaceport')"
+						type="button"
+						id="nav-t2"
+					>
+						2
+					</button>
+					<button
+						onclick="changeTech(event, 'Space capsule')"
+						type="button"
+						id="nav-t3"
+					>
+						3
+					</button>
+				</section>
+
+				<section class="technology__details">
+					<p class="terminology__txt">THE TERMINOLOGY ...</p>
+					<h3 id="technology-name" class="technology__name">Launch vehicle</h3>
+					<p id="technology-description" class="technology__description">
+						A launch vehicle or carrier rocket is a rocket-propelled vehicle
+						used to carry a payload from Earth's surface to space, usually to
+						Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful
+						in operation. Standing 150 metres tall, it's quite an awe-inspiring
+						sight on the launch pad!
+					</p>
+				</section>
+			</section>
+		</main>
+		<script src="js/main.js"></script>
+	</body>
+</html>
